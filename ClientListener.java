@@ -15,9 +15,11 @@ public class ClientListener extends Thread{
 	        
 	        while(true){
 	        	String message = ChatClient.messageQueue.take();
+	        	if (message.equals("exit")) break;
 	        	out.println(message);
 	        	System.out.println("Message sent: " + message);
 	        }
+	        socket.close();
 		}catch(Exception ex){
 			ex.printStackTrace();
 		}

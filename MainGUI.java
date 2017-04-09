@@ -156,8 +156,10 @@ public class MainGUI {
 					Socket socket = new Socket("codebank.xyz", 38001);
 					ChatClient.clientListener = new ClientListener(socket);
 					ChatClient.serverListener = new ServerListener(socket,chatBox);
+					AutomatedMessage autoMessage = new AutomatedMessage();
 					ChatClient.clientListener.start();
 					ChatClient.serverListener.start();
+					autoMessage.start();
 					try {
 						ChatClient.messageQueue.put(username);
 					} catch (InterruptedException e) {
